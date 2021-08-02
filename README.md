@@ -10,6 +10,4 @@ Plane 20 of Icosahedron is home to the Crit Castle, currently being corrupted by
 small village on the brink of destitution, desperate for a savior. Will you venture into The Icosahedron and restore balance to the life of this world? <br><br>
 
 ## Overview
-
-
-Demo for a web based choose your own, puzzle solving adventure
+This is a demo for a web based, dice rolling, choose your own adventure game that incorporates java and javascript to roll a virtual 20 sided die plus the specific stat to determine the fate and outcomes of the player resulting in a unique experience every time.
