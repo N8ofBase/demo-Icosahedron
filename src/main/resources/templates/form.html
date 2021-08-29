@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <title>ICOSAHEDRON</title>
+</head>
+<body>
+
+<form action="#" th:action="@{form}" method="post">
+    <label for='hero'>Create your Hero</label>
+    <br><br>
+    <select th:hero='${hero}' id='hero'>
+        <option th:value="null">** Choose your Role **</option>
+        <option th:value='champion' th:text="Champion">Champion</option>
+        <option th:value='maverick' th:text="Maverick">Maverick</option>
+        <option th:value='soulseer' th:text="SoulSeer">Soul Seer</option>
+        <option th:value='whisper' th:text="Whisper">Whisper</option>
+        </select>
+    <br><br>
+    <input type='text' th:name='${name}'/>
+    <input type='submit' value='Name your Hero'/>
+    </form>
+
+</body>
+</html>

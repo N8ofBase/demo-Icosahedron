@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: welcome"></div>
+<header th:replace="fragments :: header"></header>
+
+    <p th:unless="${heroes} and ${heroes.size()}">No Heroes to send to their doom!</p>
+    <table th:replace="fragments :: hero-table"></table>
+<div>
+    <form th:replace="fragments :: kill-form"></form>
+</div>
+
+</body>
+</html>

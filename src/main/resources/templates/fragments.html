@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">Icosahedron</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body class="container">
+
+<div th:fragment="welcome" class="text-center">
+    <h1><u>Welcome to the Icosahedron</u></h1>
+    <p class="lead"><strong>It is an impressive, gigantic, polyhedron with 20 sides of equilateral 60 degree triangles.
+        This one contains it's own universe where the actions of the beings inhabiting it are determined by the roll
+        of their own personal icosahedron. It is not an easy life, relying on the luck of a twenty sided die, but it is
+        the only life they know. Currently the Icosahedron is decaying as a result of the Crit Castle falling under
+        corrupt rule causing a plague of "1's" to affect all the creatures, produce, and resources.
+        The land will soon perish if balance is not restored. Your icosahedron seems to be resistant to the corrupt energy
+        of the Castle. Not only that, but it has granted you special abilities. It seems you are the Hero the Folks have needed
+        to embark on a perilous and unlucky journey to erase the corruption and restore prosperity to all beings in
+        The Icosahedron.</strong></p>
+</div>
+
+<nav th:fragment="header" class="text-center">
+
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link" href="/heroes/create">Create Hero</a></li>
+       <li class="nav-item"><a class="nav-link" href="/heroes">Active Heroes</a></li>
+        <li class="nav-item"><a class="nav-link" href="/heroes/dead">Dead Heroes</a></li>
+
+    </ul>
+
+</nav>
+
+<form method="post" action="/heroes/dead" th:fragment="kill-form">
+
+    <th:block th:each="hero : ${heroes}">
+        <div class="form-group">
+            <button class="btn btn-danger" type="button">KILL!</button>
+
+        </div>
+    </th:block>
+
+
+</form>
+
+<form method="post" th:fragment="revive-form">
+
+    <th:block>
+        <div class="form-group">
+            <label>Revive
+                <input type="radio" name="revive" class="form-control">
+                <input type="submit" value="Revive" class="btn btn-primary">
+            </label>
+        </div>
+    </th:block>
+
+
+</form>
+
+<table th:fragment="hero-table" class="table table-hover table-bordered table-dark">
+    <thead>
+    <tr>
+        <th>Hero</th><th>Status</th><th>Name</th><th>Role</th><th>Life</th><th>Defense</th><th>Attack</th><th>Magic</th>
+        <th>Speed</th><th>Charm</th><th>Weapon</th>
+    </tr>
+    </thead>
+    <th:block th:each="hero : ${heroes}">
+        <tr>
+            <th:block th:if="${hero.role.displayName.equals('Champion')}">
+                <td><img th:src="@{/images/Championjpeg.jpg}" width="100px" class="rounded float-left"/></td>
+                <td th:text="${hero.status}" class="align-middle"></td>
+                <td th:text="${name}" class="align-middle"></td>
+                <td th:field="${role}" class="align-middle"></td>
+                <td th:text="${life}" class="align-middle"></td>
+                <td th:text="${defense}" class="align-middle"></td>
+                <td th:text="${attack}" class="align-middle"></td>
+                <td th:text="${magic}" class="align-middle"></td>
+                <td th:text="${speed}" class="align-middle"></td>
+                <td th:text="${charm}" class="align-middle"></td>
+                <td th:text="${weapon}" class="align-middle"></td>
+            </th:block>
+            <th:block th:if="${hero.role.displayName.equals('Maverick')}">
+                <td><img th:src="@{/images/Maverick2.png}" width="100px" class="rounded float-left"/></td>
+                <td th:text="${hero.status}" class="align-middle"></td>
+                <td th:text="${hero.name}" class="align-middle"></td>
+                <td th:text="${hero.role}" class="align-middle"></td>
+                <td th:field="${life}" th:text="${hero.life}" class="align-middle"></td>
+                <td th:field="${hero.defense}" class="align-middle"></td>
+                <td th:field="${attack}" class="align-middle"></td>
+                <td th:field="${magic}" class="align-middle"></td>
+                <td th:field="${speed}" class="align-middle"></td>
+                <td th:field="${charm}" class="align-middle"></td>
+                <td th:field="${weapon}" class="align-middle"></td>
+            </th:block>
+            <th:block th:if="${hero.role.equals('Soul Seer')}">
+                <td><img th:src="@{/images/soulseer.jpg}" width="100px" class="rounded float-left"/></td>
+                <td th:text="${hero.status}" class="align-middle"></td>
+                <td th:text="${hero.name}" class="align-middle"></td>
+                <td th:text="${hero.role}" class="align-middle"></td>
+                <td th:text="${hero.life}" class="align-middle"></td>
+                <td th:text="${hero.defense}" class="align-middle"></td>
+                <td th:text="${hero.attack}" class="align-middle"></td>
+                <td th:text="${hero.magic}" class="align-middle"></td>
+                <td th:text="${hero.speed}" class="align-middle"></td>
+                <td th:text="${hero.charm}" class="align-middle"></td>
+                <td th:text="${hero.weapon}" class="align-middle"></td>
+            </th:block>
+            <th:block th:if="${hero.role.equals('Whisper')}">
+                <td><img th:src="@{/images/Whisper.png}" width="100px" class="rounded float-left"/></td>
+                <td th:text="${hero.status}" class="align-middle"></td>
+                <td th:text="${hero.name}" class="align-middle"></td>
+                <td th:text="${hero.role}" class="align-middle"></td>
+                <td th:text="${hero.life}" class="align-middle"></td>
+                <td th:text="${hero.defense}" class="align-middle"></td>
+                <td th:text="${hero.attack}" class="align-middle"></td>
+                <td th:text="${hero.magic}" class="align-middle"></td>
+                <td th:text="${hero.speed}" class="align-middle"></td>
+                <td th:text="${hero.charm}" class="align-middle"></td>
+                <td th:text="${hero.weapon}" class="align-middle"></td>
+            </th:block>
+        </tr>
+    </th:block>
+
+</table>
+
+<div th: fragment="player-portal">
+    <div class="container">
+        <div class="row">
+            <div class="col align-self-start">
+                <th:block th:for="hero : ${heroes}">
+                    <th:block th:if="hero.role.equals('Champion')">
+
+                    </th:block>
+                </th:block>
+            </div>
+            <div class="col align-self-center">
+                One of three columns
+            </div>
+            <div class="col align-self-end">
+                One of three columns
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: welcome"></div>
+<header th:replace="fragments :: header"></header>
+
+<div>
+    <div>
+        <table th:replace="fragments :: hero-table"></table>
+    </div>
+    <div>
+        <form th:replace="fragments :: revive-form"></form>
+    </div>
+</div>
+</body>
+</html>

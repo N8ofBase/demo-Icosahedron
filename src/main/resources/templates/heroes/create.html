@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: welcome"></div>
+<br>
+<header th:replace="fragments :: header"></header>
+<br><br>
+
+<div>
+    <h2><u>Choose your Role</u></h2>
+    <div>
+        <br>
+    <form method="post" action="/heroes/create">
+        <div class="form-group">
+            <label>Choose Your Role
+            <select th:field="${hero.role}">Choose
+                <option th:each="role : ${types}"
+                        th:value="${role}"
+                        th:text="${role.displayName}">
+                </option>
+            </select>
+            </label>
+<!--            <input class="form-check-input" type="radio" id="champion" th:field="${hero.role}" value="Champion">-->
+<!--            <label class="form-check-label" for="champion">Champion</label>-->
+<!--        </div>-->
+<!--        <div class="form-check-inline">-->
+<!--            <input class="form-check-input" type="radio" id="maverick" th:field="${hero.role}" value="Maverick">-->
+<!--            <label class="form-check-label" for="maverick">Maverick</label>-->
+<!--        </div>-->
+<!--        <div class="form-check-inline">-->
+<!--            <input class="form-check-input" type="radio" id="soulseer" th:field="${hero.role}" value="Soul Seer">-->
+<!--            <label class="form-check-label" for="soulseer">Soul Seer</label>-->
+<!--        </div>-->
+<!--        <div class="form-check-inline">-->
+<!--            <input class="form-check-input" type="radio" id="whisper" th:field="${hero.role}" value="Whisper">-->
+<!--            <label class="form-check-label" for="whisper">Whisper</label>-->
+        </div>
+        <div class="form-group">
+            <br><br>
+            <h2><u>Name Hero</u></h2>
+            <input th:field="${hero.name}" class="form-control">
+            <p class="error" th:errors="${hero.name}"></p>
+            <br><br>
+        </div>
+        <div class="form-group">
+            <label>Player Email
+            <input th:field="${hero.playerEmail}" class="form-control">
+            </label>
+            <p class="error" th:errors="${hero.playerEmail}"></p>
+        </div>
+    <div class="form-group">
+        <br><br>
+    <input type="submit" value="Create Hero" class="btn btn-success">
+    </div>
+</form>
+    </div>
+</div>
+</body>
+</html>
